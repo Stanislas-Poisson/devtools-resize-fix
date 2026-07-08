@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-07-08
+
+- Fix: `manifest.json` `description` was 151 characters, over Chrome's
+  132-character hard limit — rejected at Chrome Web Store upload
+  ("Le champ description... trop long"). Shortened to 113 characters.
+
 ## 1.0.0 — 2026-07-08
 
 - Rewritten around `devtools_page` instead of a `webNavigation`
