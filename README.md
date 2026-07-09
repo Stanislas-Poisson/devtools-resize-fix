@@ -64,6 +64,13 @@ Fix** → right-click → **Options**, to adjust:
 - **Restore delay (ms)** - time between the shrink and the restore. Too
   short and the two changes can get coalesced into a no-op.
 
+<details>
+<summary>Screenshot</summary>
+
+<img src="store-assets/screenshot_options.png" alt="Options page screenshot" width="640" />
+
+</details>
+
 ## Limitations
 
 - Maximized windows flicker through a brief `normal`/`maximized` cycle
@@ -83,6 +90,13 @@ DevTools inspection, so the extension logs its own operations to
 `chrome.storage.local` instead. Open
 `chrome-extension://<extension-id>/debug.html` (a plain page, no special
 DevTools gymnastics needed) to see what it's doing in real time.
+
+<details>
+<summary>Screenshot</summary>
+
+<img src="store-assets/screenshot_debug.png" alt="Debug log page screenshot" width="640" />
+
+</details>
 
 <a id="how-it-works"></a>
 
