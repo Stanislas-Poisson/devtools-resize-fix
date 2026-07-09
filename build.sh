@@ -16,6 +16,10 @@ zip -r "$out_zip" \
   manifest.json \
   devtools.html \
   devtools.js \
+  debug.html \
+  debug.js \
+  options.html \
+  options.js \
   icons/icon16.png \
   icons/icon48.png \
   icons/icon128.png \
