@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Packages the extension into dist/devtools-resize-fix-vX.Y.Z.zip,
+# Packages the extension into dist/devtools-resize-fix-X.Y.Z.zip,
 # ready for Chrome Web Store upload or manual "Load unpacked" sideload.
 set -euo pipefail
 
@@ -7,7 +7,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 
 version=$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])")
 out_dir="dist"
-out_zip="${out_dir}/devtools-resize-fix-v${version}.zip"
+out_zip="${out_dir}/devtools-resize-fix-${version}.zip"
 
 mkdir -p "$out_dir"
 rm -f "$out_zip"
