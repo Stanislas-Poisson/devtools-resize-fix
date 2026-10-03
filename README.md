@@ -32,7 +32,7 @@ window or toggle DevTools off and on again to "unstick" the layout.
 <details>
 <summary>Manually, from a release zip</summary>
 
-1. Download the latest `devtools-resize-fix-vX.Y.Z.zip` from the
+1. Download the latest `devtools-resize-fix-X.Y.Z.zip` from the
    [Releases](../../releases) page and unzip it somewhere permanent.
 2. Go to `chrome://extensions`.
 3. Enable **Developer mode** (top right).
