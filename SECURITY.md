@@ -6,7 +6,7 @@ Only the latest version of this browser extension currently receives security up
 
 | Version | Supported          |
 | ------- | ------------------ |
-| Latest  | :white_check_mark: |
+| 1.x     | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
