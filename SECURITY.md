@@ -17,4 +17,4 @@ Instead, report it privately through GitHub:
 2. Click **Report a vulnerability**.
 3. Fill out the details including steps to reproduce, potential impact, and any proposed fixes.
 
-You will receive an initial response acknowledging your report within 48 hours.
+You will receive an answer as soon as possible.
