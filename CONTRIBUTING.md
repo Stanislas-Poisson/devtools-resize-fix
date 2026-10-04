@@ -9,9 +9,25 @@ Thank you for contributing! This project is a Chrome/Chromium extension (Manifes
 - **Commit Format:** Use the format `type(scope): #ticket subject`:
   - Example: `docs(community): #2 add community documentation files`
 
-## Local Development & Setup
+## Try your change
 
-### 1. Build & Icon Setup
-Icons are generated using Python and Pillow:
+1. Open `chrome://extensions` and enable **Developer mode**.
+2. Click **Load unpacked** and select the repository folder.
+3. After each edit, click the reload button of the extension.
+4. Open `debug.html` from the extension to read the log.
+
+## Build the package
+
+```sh
+./build.sh
+```
+
+The zip is written in `dist/`, named after the version in `manifest.json`.
+
+## Icons
+
+The icons are generated with Python and Pillow. Run this only if you change the design:
+
 ```sh
 python3 icons/generate.py
+```
