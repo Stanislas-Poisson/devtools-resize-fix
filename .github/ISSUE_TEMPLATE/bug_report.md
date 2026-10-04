@@ -17,7 +17,7 @@ A clear and concise description of what the bug is.
 
 **Extension Options Configured**
 - Enabled: [Yes/No]
-- 
+-
 - Nudge size (px):
 - Restore delay (ms):
 
