@@ -5,7 +5,7 @@ Thank you for contributing! This project is a Chrome/Chromium extension (Manifes
 ## Git Workflow
 
 - **Base Branch:** Always create your branches off of and target `develop` for your pull requests.
-- **Branch Naming:** Use descriptive branch names per issue (e.g., `fix/options-delay` or `docs/add-community-files`).
+- **Branch Naming:** One branch per issue, for example `feature/#12-short-name`.
 - **Commit Format:** Use the format `type(scope): #ticket subject`:
   - Example: `docs(community): #2 add community documentation files`
 
