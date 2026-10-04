@@ -24,7 +24,6 @@ Thank you for contributing! This project is a Chrome/Chromium extension (Manifes
 
 The zip is written in `dist/`, named after the version in `manifest.json`.
 
-
 ## Icons
 
 The icons are generated with Python and Pillow. Run this only if you change the design:
