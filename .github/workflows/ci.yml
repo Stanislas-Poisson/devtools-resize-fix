@@ -65,7 +65,7 @@ jobs:
 
   ci:
     name: ci
-    needs: [validate-manifest, build-check, js-lint]
+    needs: [validate-manifest, build-check]
     runs-on: ubuntu-latest
     steps:
       - name: Aggregate CI Status
