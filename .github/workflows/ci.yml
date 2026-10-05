@@ -22,7 +22,7 @@ jobs:
       - name: Check manifest version matches CHANGELOG.md
         run: |
           MANIFEST_VERSION=$(jq -r '.version' manifest.json)
-          CHANGELOG_VERSION=$(grep -m 1 -E '^## \[[0-9]+\.[0-9]+\.[0-9]+\]' CHANGELOG.md | sed -E 's/.*\[([0-9]+\.[0-9]+\.[0-9]+)\].*/\1/')
+          CHANGELOG_VERSION=$(grep -m 1 -E '^## [0-9]+\.[0-9]+\.[0-9]+' CHANGELOG.md | sed -E 's/^## ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
           
           if [ "$MANIFEST_VERSION" != "$CHANGELOG_VERSION" ]; then
             echo "Error: manifest.json version ($MANIFEST_VERSION) does not match CHANGELOG.md version ($CHANGELOG_VERSION)"
