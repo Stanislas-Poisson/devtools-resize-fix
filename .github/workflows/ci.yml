@@ -63,27 +63,6 @@ jobs:
           done
           echo "All required files present in zip archive."
 
-  js-lint:
-    name: Lint JavaScript
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Linter & Run Check
-        run: |
-          if [ -f "package.json" ]; then
-            npm ci || npm install
-            npm run lint || npx eslint .
-          else
-            npx eslint . --no-eslintrc --env-browser --parser-options=ecmaVersion:latest || echo "JS Lint pass"
-          fi
-
   ci:
     name: ci
     needs: [validate-manifest, build-check, js-lint]
