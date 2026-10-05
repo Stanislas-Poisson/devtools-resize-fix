@@ -31,7 +31,7 @@ permissions:
 
       - name: Compute SHA-256 Checksum
         run: |
-          ZIP_FILE=$(ls *.zip | head -n 1)
+          ZIP_FILE=$(ls dist/*.zip | head -n 1)
           sha256sum "$ZIP_FILE" > "${ZIP_FILE}.sha256"
           echo "SHA-256 generated for $ZIP_FILE"
 
