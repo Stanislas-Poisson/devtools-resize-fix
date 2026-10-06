@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- README: install steps for Edge, Opera and Brave (the same zip, no change of code).
+
 ## 1.1.0 - 2026-07-09
 
 - Fix: maximized/fullscreen windows now keep their bounds pinned to the
