@@ -147,6 +147,10 @@ python3 icons/generate.py
 
 </details>
 
+## Statistics
+
+![Statistics of devtools-resize-fix][stats-card]
+
 ## License
 
 MIT - see [LICENSE](LICENSE).
@@ -173,3 +177,5 @@ games with the chat.*
 [![Support the stream](https://img.shields.io/badge/Support-the_stream-FF5A5F?style=flat-square)](https://pots.lydia.me/collect/pots?id=18363-dons-stream)
 
 </div>
+
+[stats-card]: https://raw.githubusercontent.com/Stanislas-Poisson/Stanislas-Poisson/main/assets/projects/devtools-resize-fix.svg
