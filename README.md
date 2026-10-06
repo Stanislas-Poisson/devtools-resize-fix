@@ -41,6 +41,17 @@ window or toggle DevTools off and on again to "unstick" the layout.
 </details>
 
 <details>
+<summary>Microsoft Edge, Opera, Brave (Chromium)</summary>
+
+They are Chromium browsers with the same DevTools docking, so the same zip
+runs as it is, and the bug is the same: open `edge://extensions`,
+`opera://extensions` or `brave://extensions`, enable **Developer mode** and use
+**Load unpacked** on the unzipped release. The extension asks for no permission
+that these browsers do not know (`tabs`, `windows`, `storage`, `devtools_page`).
+
+</details>
+
+<details>
 <summary>From source</summary>
 
 ```sh
