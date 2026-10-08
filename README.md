@@ -43,10 +43,11 @@ window or toggle DevTools off and on again to "unstick" the layout.
 <details>
 <summary>Microsoft Edge, Opera, Brave (Chromium)</summary>
 
-They are Chromium browsers with the same DevTools docking, so the same zip
-runs as it is, and the bug is the same: open `edge://extensions`,
-`opera://extensions` or `brave://extensions`, enable **Developer mode** and use
-**Load unpacked** on the unzipped release. The extension asks for no permission
+They are Chromium browsers, so the same zip runs as it is. The bug was seen in
+Opera GX and was not seen in Edge, where the extension may not be needed; Brave
+was not tested. Open `edge://extensions`, `opera://extensions` or
+`brave://extensions`, enable **Developer mode** and use **Load unpacked** on the
+unzipped release. The extension asks for no permission
 that these browsers do not know (`tabs`, `windows`, `storage`, `devtools_page`).
 
 </details>
@@ -90,9 +91,9 @@ Fix** → right-click → **Options**, to adjust:
   DevTools is actually docked or undocked (floating in its own window).
   When undocked, the nudge is harmless but unnecessary - there is no
   public Chrome API to detect dock state from an extension.
-- Only verified on Chromium-based browsers (Chrome, Edge, Brave, ...).
-  Not currently packaged for Firefox - the equivalent bug hasn't been
-  confirmed there; open an issue if you can reproduce it.
+- The bug was seen in Chrome and Opera GX. It was not seen in Edge or Firefox,
+  so the extension is not published for them: Edge users can install it from
+  the Chrome Web Store. Open an issue if you can reproduce the bug there.
 
 ## Debugging
 
