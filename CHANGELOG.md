@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 1.1.1 - 2026-10-12
 
+- Tests: browser tests (Chrome and Edge, in the CI) load the package with DevTools open and check that the extension installs, that its pages work and that its code runs, nudges the window and stops when disabled.
 - README: install steps for Edge, Opera and Brave (the same zip, no change of code).
 
 ## 1.1.0 - 2026-07-09

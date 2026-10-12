@@ -16,6 +16,19 @@ Thank you for contributing! This project is a Chrome/Chromium extension (Manifes
 3. After each edit, click the reload button of the extension.
 4. Open `debug.html` from the extension to read the log.
 
+## Run the browser tests
+
+The tests load the built package in Chrome or Edge, with DevTools open on a page. They need Node.js and a
+virtual screen, because DevTools does not open in headless mode (`xvfb-run` on Linux):
+
+```sh
+cd tests/e2e
+npm ci
+xvfb-run -a env BROWSER=chrome npm test   # or BROWSER=edge
+```
+
+The layout bug itself is not tested: it does not show up in a browser on a virtual screen.
+
 ## Build the package
 
 ```sh
