@@ -14,7 +14,7 @@ The limits of the forms change: check them when you submit.
 DevTools Resize Fix
 ```
 
-**Short description** (the manifest `description`, 117 characters)
+**Short description** (the manifest `description`, 113 characters)
 
 ```
 Fixes the Chromium bug where docked DevTools breaks page layout after reload. Active only while DevTools is open.
