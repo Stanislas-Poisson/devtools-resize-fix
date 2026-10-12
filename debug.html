@@ -161,6 +161,17 @@
         color: var(--muted);
         margin: 0 0 0.6rem;
       }
+      footer .links {
+        font-size: 0.8rem;
+        margin: 0 0 0.75rem;
+      }
+      footer .links a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      footer .links a:hover {
+        text-decoration: underline;
+      }
       .pills {
         display: flex;
         flex-wrap: wrap;
@@ -200,7 +211,7 @@
         <img src="icons/icon48.png" alt="" />
         <div>
           <h1>Debug Log</h1>
-          <p>DevTools Resize Fix</p>
+          <p>DevTools Resize Fix <span id="version"></span></p>
         </div>
       </div>
 
@@ -215,6 +226,13 @@
       </div>
 
       <footer>
+        <p class="links">
+          <a href="https://github.com/Stanislas-Poisson/devtools-resize-fix" target="_blank" rel="noopener">Source</a>
+          &middot;
+          <a href="https://github.com/Stanislas-Poisson/devtools-resize-fix/issues" target="_blank" rel="noopener">Report an issue</a>
+          &middot;
+          <a href="https://github.com/Stanislas-Poisson/devtools-resize-fix/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy policy</a>
+        </p>
         <p class="made-by">Made by Stanislas Poisson (Zairakai)</p>
         <div class="pills">
           <a style="--pill:#8b96a3" href="https://github.com/Stanislas-Poisson" target="_blank" rel="noopener">
