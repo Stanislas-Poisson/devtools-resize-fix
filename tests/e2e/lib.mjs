@@ -115,8 +115,20 @@ async function launchOnce(browser, dir) {
     builder.forBrowser(Browser.CHROME).setChromeOptions(options);
   }
   const driver = await builder.build();
-  await driver.manage().setTimeouts({ pageLoad: 30_000, script: 30_000 });
-  return { driver, base: `chrome-extension://${chromiumId(dir)}/` };
+  const base = `chrome-extension://${chromiumId(dir)}/`;
+
+  // The renderer of a freshly started Chromium can be stuck on its first page, mostly Edge on a runner.
+  // The first page is loaded here, with a short limit, so that the caller starts the browser again if it fails.
+  try {
+    await driver.manage().setTimeouts({ pageLoad: 30_000, script: 30_000 });
+    await driver.get(`${base}options.html`);
+    await driver.executeScript('return document.readyState');
+  } catch (error) {
+    await driver.quit().catch(() => {});
+    throw error;
+  }
+
+  return { driver, base };
 }
 
 // A browser sometimes does not start on a busy runner: each attempt has a time limit and a new one follows.
