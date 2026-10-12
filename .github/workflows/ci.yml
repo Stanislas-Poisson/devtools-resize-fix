@@ -64,11 +64,38 @@ jobs:
           done
           echo "All required files present in zip archive."
 
+  # The package is loaded in the real browsers of the runner, with DevTools open on a page. See tests/e2e.
+  e2e:
+    name: Browser test (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome, edge]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install the test dependencies
+        working-directory: tests/e2e
+        run: npm ci
+
+      - name: Build the package
+        run: bash build.sh
+
+      # DevTools only opens in a browser with a window: a virtual screen replaces headless mode.
+      - name: Run the tests in ${{ matrix.browser }}
+        working-directory: tests/e2e
+        env:
+          BROWSER: ${{ matrix.browser }}
+        run: xvfb-run -a npm test
+
   # The check that the branch protection requires. It runs even when a job
   # fails, and fails with it: a skipped job would count as a success.
   ci:
     name: ci
-    needs: [validate-manifest, build-check]
+    needs: [validate-manifest, build-check, e2e]
     runs-on: ubuntu-latest
     if: always()
     steps:
