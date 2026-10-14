@@ -8,6 +8,8 @@
 //
 // The layout bug itself is not tested: it does not show up in a browser on a virtual screen.
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { after, before, describe, test } from 'node:test';
 
 import { By } from 'selenium-webdriver';
@@ -92,6 +94,23 @@ describe(`extension in ${browser}`, { timeout: 300_000 }, () => {
       await driver.switchTo().window(extensionTab);
       await driver.findElement(By.id('reset')).click();
       await waitFor(async () => (await storageGet()).nudgePx === 3, { message: 'the reset settings' });
+    });
+    test('the options and debug pages show the version and the links', async () => {
+      const { version } = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '../../manifest.json'), 'utf8'));
+
+      for (const page of ['options.html', 'debug.html']) {
+        await driver.switchTo().window(extensionTab);
+        await driver.get(`${base}${page}`);
+        await waitFor(async () => (await driver.findElement(By.id('version')).getText()) === `v${version}`, { message: `the version on ${page}` });
+
+        const links = await driver.findElements(By.css('footer .links a'));
+        const hrefs = await Promise.all(links.map((link) => link.getAttribute('href')));
+        assert.deepEqual(hrefs, [
+          'https://github.com/Stanislas-Poisson/devtools-resize-fix',
+          'https://github.com/Stanislas-Poisson/devtools-resize-fix/issues',
+          'https://github.com/Stanislas-Poisson/devtools-resize-fix/blob/main/PRIVACY.md',
+        ]);
+      }
     });
   });
 
