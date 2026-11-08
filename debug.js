@@ -35,3 +35,6 @@ chrome.storage.onChanged.addListener((changes, area) => {
 document.getElementById("clear").addEventListener("click", () => {
   chrome.storage.local.set({ debugLog: [] });
 });
+
+// The version in the header is the one of the manifest, so it tells which build is installed.
+document.getElementById("version").textContent = "v" + chrome.runtime.getManifest().version;

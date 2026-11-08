@@ -8,6 +8,8 @@
 //
 // The layout bug itself is not tested: it does not show up in a browser on a virtual screen.
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { after, before, describe, test } from 'node:test';
 
 import { By } from 'selenium-webdriver';
@@ -93,6 +95,23 @@ describe(`extension in ${browser}`, { timeout: 300_000 }, () => {
       await driver.findElement(By.id('reset')).click();
       await waitFor(async () => (await storageGet()).nudgePx === 3, { message: 'the reset settings' });
     });
+    test('the options and debug pages show the version and the links', async () => {
+      const { version } = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '../../manifest.json'), 'utf8'));
+
+      for (const page of ['options.html', 'debug.html']) {
+        await driver.switchTo().window(extensionTab);
+        await driver.get(`${base}${page}`);
+        await waitFor(async () => (await driver.findElement(By.id('version')).getText()) === `v${version}`, { message: `the version on ${page}` });
+
+        const links = await driver.findElements(By.css('footer .links a'));
+        const hrefs = await Promise.all(links.map((link) => link.getAttribute('href')));
+        assert.deepEqual(hrefs, [
+          'https://github.com/Stanislas-Poisson/devtools-resize-fix',
+          'https://github.com/Stanislas-Poisson/devtools-resize-fix/issues',
+          'https://github.com/Stanislas-Poisson/devtools-resize-fix/blob/main/PRIVACY.md',
+        ]);
+      }
+    });
   });
 
   describe('devtools page', () => {
@@ -106,12 +125,17 @@ describe(`extension in ${browser}`, { timeout: 300_000 }, () => {
     });
 
     test('each navigation of the inspected tab nudges the window and restores it', async () => {
+      await waitForQuiet();
+
       const since = Date.now();
       await navigateInspected('second');
 
+      // The restore of a nudge that was already running can be logged just after `since`: only the one that follows this
+      // navigation counts, otherwise the checks below read a log that this navigation has not written yet.
       const messages = await waitFor(async () => {
         const log = await logSince(since);
-        return log.some((msg) => msg.endsWith('width restored')) && log;
+        const navigated = log.indexOf('onNavigated fired');
+        return navigated !== -1 && log.slice(navigated).some((msg) => msg.endsWith('width restored')) && log;
       }, { message: 'the window to be nudged and restored' });
 
       assert.ok(messages.includes('onNavigated fired'));

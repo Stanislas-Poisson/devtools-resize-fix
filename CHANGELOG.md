@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The options and debug pages show the version of the extension, and link to the source, the issues and the privacy policy.
+
 ## 1.1.1 - 2026-10-12
 
 - Tests: browser tests (Chrome and Edge, in the CI) load the package with DevTools open and check that the extension installs, that its pages work and that its code runs, nudges the window and stops when disabled.

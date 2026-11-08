@@ -2,5 +2,14 @@ version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: "develop"
     schedule:
       interval: "monthly"
+
+  - package-ecosystem: "npm"
+    directory: "/tests/e2e"
+    target-branch: "develop"
+    schedule:
+      interval: "monthly"
+    # Only the security updates: no version update is opened for this directory.
+    open-pull-requests-limit: 0
