@@ -125,12 +125,17 @@ describe(`extension in ${browser}`, { timeout: 300_000 }, () => {
     });
 
     test('each navigation of the inspected tab nudges the window and restores it', async () => {
+      await waitForQuiet();
+
       const since = Date.now();
       await navigateInspected('second');
 
+      // The restore of a nudge that was already running can be logged just after `since`: only the one that follows this
+      // navigation counts, otherwise the checks below read a log that this navigation has not written yet.
       const messages = await waitFor(async () => {
         const log = await logSince(since);
-        return log.some((msg) => msg.endsWith('width restored')) && log;
+        const navigated = log.indexOf('onNavigated fired');
+        return navigated !== -1 && log.slice(navigated).some((msg) => msg.endsWith('width restored')) && log;
       }, { message: 'the window to be nudged and restored' });
 
       assert.ok(messages.includes('onNavigated fired'));
